@@ -2,6 +2,8 @@ import { useState } from "react"
 import axios from "axios"
 import Skeleton from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
+import "animate.css/animate.min.css"
+
 export default function App() {
     const [value, setValue] = useState("")
     const [response, setResponse] = useState("")
@@ -11,12 +13,11 @@ export default function App() {
 
     const handleClick = () => {
         setLoading(true)
-        setTimeout(() => {
-            axios.get("https://viacep.com.br/ws/84640000/json/").then((res) => {
-                setLoading(false)
-                setResponse(res.data)
-            })
-        }, 1000)
+        axios.get("https://572e-45-233-108-173.ngrok-free.app/api/url/64cbe2a69c9befb0104e6cf6").then((res) => {
+            setLoading(false)
+            console.log(res)
+            setResponse(res.data)
+        })
     }
 
     return (
@@ -53,7 +54,7 @@ export default function App() {
                         </div>
                     ) : (
                         <a className={`absolute bottom-[-40px] w-full break-words text-center text-blue-500 text-xl `} href="/">
-                            {response.cep}
+                            {response.url}
                         </a>
                     )}
                 </div>

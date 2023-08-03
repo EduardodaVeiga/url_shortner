@@ -1,6 +1,3 @@
-import { useState } from "react"
-import axios from "axios"
-import Skeleton from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
 import { Link } from "react-router-dom"
 
