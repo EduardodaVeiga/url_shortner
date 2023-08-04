@@ -18,7 +18,7 @@ client.connect((err) => {
         process.exit(1);
     } else {
         client.db("admin").command({ ping: 1 });
-        console.log('Conectado ao banco de dados com sucesso!');
+        console.log('Connected to database!');
     }
 });
 

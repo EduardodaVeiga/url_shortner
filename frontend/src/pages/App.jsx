@@ -13,7 +13,7 @@ export default function App() {
 
     const handleClick = () => {
         setLoading(true)
-        axios.get("https://572e-45-233-108-173.ngrok-free.app/api/url/64cbe2a69c9befb0104e6cf6").then((res) => {
+        axios.get("http://localhost:3009/api/url/64cbe2a69c9befb0104e6cf6").then((res) => {
             setLoading(false)
             console.log(res)
             setResponse(res.data)

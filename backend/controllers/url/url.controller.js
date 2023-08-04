@@ -16,7 +16,7 @@ class UrlController {
         const newDoc = await db.collection('url_info').insertOne({ url });
 
         if(newDoc.acknowledged){
-            return res.status(200).json({'newURL': `localhost:3000/redirect?url=localhost:3009/api/url/${newDoc.insertedId}`});
+            return res.status(200).json({newURL: `localhost:3000/${newDoc.insertedId}`});
         }else return res.status(500)
 
     }
@@ -36,7 +36,7 @@ class UrlController {
                 const long_link = await db.collection('url_info').findOne({_id:objectId});
     
                 if(long_link){
-                    return res.header("Access-Control-Allow-Origin", "*").status(200).json({url:long_link.url})
+                    return res.status(200).json({url:long_link.url})
                 }
                 else return res.status(500);
             }else return res.status(500);
