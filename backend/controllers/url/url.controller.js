@@ -35,7 +35,7 @@ class UrlController {
                 const long_link = await db.collection("url_info").findOne({ _id: objectId })
 
                 if (long_link) {
-                    return res.header("Access-Control-Allow-Origin", "*").status(200).json({ url: long_link.url })
+                    return res.status(200).json({ url: long_link.url })
                 } else return res.status(500)
             } else return res.status(500)
         } catch (error) {
