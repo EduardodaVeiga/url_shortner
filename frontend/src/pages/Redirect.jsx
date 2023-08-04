@@ -33,12 +33,12 @@ export default function Redirect() {
             setTime(timeTemp)
         }, 1000)
 
-        // setTimeout(() => {
-        //     clearInterval(timer)
-        //     urlFetch().then((res) => {
-        //         window.location.assign(res.data.url)
-        //     })
-        // }, 5000)
+        setTimeout(() => {
+            clearInterval(timer)
+            urlFetch().then((res) => {
+                window.location.assign(res.data.url)
+            })
+        }, 5000)
     }
 
     useEffect(() => {
