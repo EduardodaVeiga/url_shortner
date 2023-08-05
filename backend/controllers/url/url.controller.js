@@ -1,35 +1,34 @@
-const { ObjectId } = require('mongodb');
-const mongo = require('../../config/database');
-const { db } = require('../../config/database');
+const { ObjectId } = require("mongodb")
+const mongo = require("../../config/database")
+const { db } = require("../../config/database")
 
 class UrlController {
     /**
-   * @param req request body
-   * @param res callback response object
-   * @description Method to shorten received url
-   * @date 03 august 2023
-   * @updated 03 august 2023
-   */
+     * @param req request body
+     * @param res callback response object
+     * @description Method to shorten received url
+     * @date 03 august 2023
+     * @updated 03 august 2023
+     */
     static async shortenURL(req, res) {
-        const { url } = req.body;
+        const { url } = req.body
 
-        const newDoc = await db.collection('url_info').insertOne({ url });
+        const newDoc = await db.collection("url_info").insertOne({ url })
 
-        if(newDoc.acknowledged){
-            return res.status(200).json({newURL: `localhost:3000/${newDoc.insertedId}`});
-        }else return res.status(500)
-
+        if (newDoc.acknowledged) {
+            return res.status(200).json({ newURL: `localhost:3000/redirect/${newDoc.insertedId}` })
+        } else return res.status(500)
     }
 
     /**
-   * @param req request body
-   * @param res callback response object
-   * @description Method to redirect user to given url
-   * @date 03 august 2023
-   * @updated 03 august 2023
-   */
+     * @param req request body
+     * @param res callback response object
+     * @description Method to redirect user to given url
+     * @date 03 august 2023
+     * @updated 03 august 2023
+     */
     static async redirectURL(req, res) {
-        const {id} = req.params;
+        const { id } = req.params
         try {
             if(id){
                 const objectId = new ObjectId(id);
@@ -44,7 +43,6 @@ class UrlController {
             console.log(error);
             return res.status(500);
         }
-        
     }
 }
-module.exports = UrlController;
+module.exports = UrlController

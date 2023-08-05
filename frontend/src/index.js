@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     },
     {
         element: <Redirect />,
-        path: "/redirect",
+        path: "/redirect/:id",
     },
 ])
 

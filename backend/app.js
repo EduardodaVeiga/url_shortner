@@ -1,16 +1,18 @@
-require('dotenv').config();
-const { db } = require('./config/database');
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const indexRouter = require('./routes/index');
+require("dotenv").config()
+const { db } = require("./config/database")
+const express = require("express")
+const app = express()
+const cors = require("cors")
+const indexRouter = require("./routes/index")
 
-app.use(cors({
-  origin:'*'
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+  })
+)
 
-app.use(express.json());
-app.use("/", indexRouter);
+app.use(express.json())
+app.use("/", indexRouter)
 
 // Check for Invalid request // catch 404
 app.use(function (req, res, next) {
@@ -19,13 +21,12 @@ app.use(function (req, res, next) {
     success: false,
     message: "Not Found",
     data: {},
-  });
-});
+  })
+})
 
 app.listen(3009, (err) => {
-  if (err) console.log(err);
-  else console.log("server is running on 3009");
-});
+  if (err) console.log(err)
+  else console.log("server is running on 3009")
+})
 
-
-module.exports = app;
+module.exports = app
