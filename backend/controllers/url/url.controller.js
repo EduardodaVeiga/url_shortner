@@ -36,13 +36,13 @@ class UrlController {
                 const long_link = await db.collection('url_info').findOne({_id:objectId});
     
                 if(long_link){
-                    return res.status(200).json({url:long_link.url})
+                    return res.status(200).json({url:long_link.url});
                 }
-                else return res.status(500);
+                else return res.status(404);
             }else return res.status(500);
         } catch (error) {
             console.log(error);
-            return res.status(500)
+            return res.status(500);
         }
         
     }
